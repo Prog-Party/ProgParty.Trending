@@ -3,6 +3,7 @@ using ProgParty.Trending.Api.Result;
 using ProgParty.Core.Extension;
 using System.Linq;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 
 namespace ProgParty.Trending.Api.Scrape
 {
@@ -21,7 +22,7 @@ namespace ProgParty.Trending.Api.Scrape
 
             using (HttpClient client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Host = "www.boredpanda.com";
+                client.DefaultRequestHeaders.Host = "www.trending.nl";
                 client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.125 Safari/537.36");
                 //client.DefaultRequestHeaders.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
 
@@ -37,19 +38,20 @@ namespace ProgParty.Trending.Api.Scrape
             HtmlDocument htmlDocument = new HtmlDocument();
             htmlDocument.LoadHtml(result);
             var node = htmlDocument.DocumentNode;
-
+            
             ArticleResult a = new ArticleResult()
             {
                 Title = (node.Descendants("h1").FirstOrDefault()?.InnerText ?? string.Empty).Trim(),
-                ViewsCount = (node.Descendants("p").FirstOrDefault(c => c.Attributes["class"]?.Value == "views-count")?.InnerText ?? string.Empty).Trim(),
-                AuthorTime = (node.Descendants("p").FirstOrDefault(c => c.Attributes["class"]?.Value == "author-time")?.InnerText ?? string.Empty).Trim(),
-                Content = (node.Descendants("div").FirstOrDefault(c => c.Attributes["class"]?.Value == "post-content")?.InnerHtml ?? string.Empty).Trim()
+                //Author = (node.Descendants("a").FirstOrDefault()?.InnerText ?? string.Empty).Trim(),
+                //ViewsCount = (node.Descendants("span").FirstOrDefault()?.InnerText ?? string.Empty).Trim(),
+                Content = (node.Descendants("div").FirstOrDefault(c => c.Attributes["id"]?.Value == "articleContainerColumnLeft")?.InnerHtml ?? string.Empty).Trim()
             };
 
             a.Title = System.Net.WebUtility.HtmlDecode(a.Title);
-            a.AuthorTime = a.AuthorTime.Replace("\n", string.Empty).RemoveDoubleSpaces();
+            a.Content = System.Net.WebUtility.HtmlDecode(a.Content).Replace("\t", "").Replace("\n", "");
+            a.Content = Regex.Replace(a.Content, "<!--.*?-->", "", RegexOptions.Singleline);
 
-            return a;
+            return a;   
         }
     }
 }

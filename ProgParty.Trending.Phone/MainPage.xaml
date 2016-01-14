@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ProgParty.Trending"
+    xmlns:shared="using:ProgParty.Core.Element.HtmlToRtf"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -24,7 +25,7 @@
             <!--Pivot item one-->
             <PivotItem Margin="0" Padding="0" Background="#f0f0f0" Foreground="Black">
                 <PivotItem.Header>
-                    <TextBlock Text="Overview" FontSize="30" Foreground="White" />
+                    <TextBlock Text="Overzicht" FontSize="30" Foreground="White" />
                 </PivotItem.Header>
 
                 <Grid Margin="0,0,0,0" HorizontalAlignment="Stretch">
@@ -38,7 +39,7 @@
                                 </ListView.ItemContainerStyle>
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
-                                        <Grid HorizontalAlignment="Stretch" Background="{Binding Alternation.Background}">
+                                        <Grid Holding="Grid_Holding" HorizontalAlignment="Stretch" Background="{Binding Alternation.Background}">
                                             <Border BorderThickness="1" BorderBrush="#b1c4df" >
                                                 <Grid x:Name="gridResult" Margin="10" >
                                                     <Grid.ColumnDefinitions>
@@ -50,11 +51,17 @@
 
                                                     <StackPanel Margin="10,0" Grid.Column="1" Orientation="Vertical">
 
+                                                        <TextBlock Text="{Binding Type}" FontSize="9" TextWrapping="WrapWholeWords" TextAlignment="Left" />
                                                         <TextBlock FontWeight="Bold" Text="{Binding Title}" TextWrapping="WrapWholeWords" TextAlignment="Left" />
-                                                        <TextBlock Text="{Binding SubTitle}" FontSize="9" TextWrapping="WrapWholeWords" TextAlignment="Left" />
                                                     </StackPanel>
                                                 </Grid>
                                             </Border>
+                                            
+                                            <FlyoutBase.AttachedFlyout>
+                                                <MenuFlyout>
+                                                    <MenuFlyoutItem x:Name="ShareButton" Text="Deel artikel..." Click="ShareButton_Click" />
+                                                </MenuFlyout>
+                                            </FlyoutBase.AttachedFlyout>
                                         </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
@@ -66,7 +73,7 @@
 
                             <StackPanel Orientation="Vertical">
                                 <Border HorizontalAlignment="Center" Margin="0,40,0,0" >
-                                    <Button Height="80" HorizontalAlignment="Stretch" Click="LoadMoreGalleries_Click" Background="White" Foreground="Black" BorderBrush="Black" BorderThickness="2" Content="Load more articles" Width="260" Padding="25,10,25,10" />
+                                    <Button Height="80" HorizontalAlignment="Stretch" Click="LoadMoreGalleries_Click" Background="White" Foreground="Black" BorderBrush="Black" BorderThickness="2" Content="Laad meer artikelen" Width="260" Padding="25,10,25,10" />
                                 </Border>
                             </StackPanel>
 
@@ -75,7 +82,20 @@
 
                     <Grid Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-50,0,0">
                         <ComboBox HorizontalAlignment="Right" Background="#353535" Foreground="White" x:Name="ComboBoxMenu" VerticalAlignment="Top" SelectionChanged="ComboBoxMenu_SelectionChanged">
-                            <ComboBoxItem x:Name="All" Content="All" />
+                            <ComboBoxItem x:Name="All" Content="Alle artikelen" />
+                            <ComboBoxItem x:Name="Celebs" Content="Celebs"/>
+                            <ComboBoxItem x:Name="Food" Content="Food"/>
+                            <ComboBoxItem x:Name="Fun" Content="Fun"/>
+                            <ComboBoxItem x:Name="FYI" Content="FYI"/>
+                            <ComboBoxItem x:Name="Internet" Content="Internet"/>
+                            <ComboBoxItem x:Name="Lifestyle" Content="Lifestyle"/>
+                            <ComboBoxItem x:Name="Media" Content="Media"/>
+                            <ComboBoxItem x:Name="Muziek" Content="Muziek"/>
+                            <ComboBoxItem x:Name="Nieuws" Content="Nieuws"/>
+                            <ComboBoxItem x:Name="Opmerkelijk" Content="Opmerkelijk"/>
+                            <ComboBoxItem x:Name="Quiz" Content="Quiz"/>
+                            <ComboBoxItem x:Name="Sport" Content="Sport"/>
+                            <ComboBoxItem x:Name="WTF" Content="WTF"/>
                         </ComboBox>
                     </Grid>
                 </Grid>
@@ -83,7 +103,7 @@
             <!--Pivot item two-->
             <PivotItem Background="#f0f0f0" Margin="0" Padding="0">
                 <PivotItem.Header>
-                    <TextBlock Text="Article" FontSize="30" Foreground="#f0f0f0"/>
+                    <TextBlock Text="Artikel" FontSize="30" Foreground="#f0f0f0"/>
                 </PivotItem.Header>
                 <Grid Margin="0,0,0,0" HorizontalAlignment="Stretch">
                     <ScrollViewer VerticalScrollBarVisibility="Visible" VerticalScrollMode="Enabled" HorizontalAlignment="Stretch">
@@ -98,15 +118,16 @@
                                 </ListView.ItemContainerStyle>
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
-                                        <Grid HorizontalAlignment="Stretch" Background="{Binding Alternation.Background}">
+                                        <Grid HorizontalAlignment="Stretch">
                                             <StackPanel Orientation="Vertical"  HorizontalAlignment="Stretch" VerticalAlignment="Center">
                                                 <TextBlock FontWeight="Bold" Text="{Binding Title}" TextWrapping="WrapWholeWords" TextAlignment="Left" Foreground="Black" FontSize="18" Margin="10, 10, 10, 5" />
 
-                                                <StackPanel Orientation="Horizontal" Margin="20, 0, 0, 0">
+                                                <!--<StackPanel Orientation="Horizontal" Margin="20, 0, 0, 0">
                                                     <TextBlock Text="{Binding ViewsCount}" TextAlignment="Left" Foreground="Black" FontSize="10" Margin="0, 0, 10, 0" />
-                                                    <TextBlock Text="{Binding AuthorTime}" TextAlignment="Left" Foreground="Black" FontSize="10" />
-                                                </StackPanel>
+                                                    <TextBlock Text="{Binding Author}" TextAlignment="Left" Foreground="Black" FontSize="10" />
+                                                </StackPanel>-->
 
+                                                <RichTextBlock Padding="5,0,5,0" TextWrapping="Wrap" Width="380" shared:HtmlToRtfConverter.Html="{Binding Content}" Foreground="Black"></RichTextBlock>
                                             </StackPanel>
                                         </Grid>
                                     </DataTemplate>
@@ -118,7 +139,7 @@
                             </StackPanel>
                             <StackPanel Orientation="Vertical">
                                 <Border HorizontalAlignment="Center" Margin="0,20,0,40">
-                                    <Button Height="80" HorizontalAlignment="Stretch" Click="LoadPreviousGallery_Click"  Background="White" Foreground="Black" BorderBrush="Black" Content="Bored? Load next article!" Width="260" Padding="25,10,25,10" />
+                                    <Button Height="80" HorizontalAlignment="Stretch" Click="LoadPreviousGallery_Click"  Background="White" Foreground="Black" BorderBrush="Black" Content="Saai? Volgend artikel!" Width="260" Padding="25,10,25,10" />
                                 </Border>
                             </StackPanel>
                         </StackPanel>

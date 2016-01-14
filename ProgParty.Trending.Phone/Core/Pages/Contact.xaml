@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="#353535"
+    Background="#e20040"
     Foreground="#000000">
 
     <!--LayoutRoot is the root grid where all page content is placed.-->
@@ -17,16 +17,16 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Image Stretch="UniformToFill" HorizontalAlignment="Center" Source="/Assets/header1.png"/>
+        <Image Stretch="UniformToFill" HorizontalAlignment="Center" Source="/Assets/trending_icon_bw_200x200.png" Width="170" />
 
-        <Grid Background="#353535" Grid.Row="1">
+        <Grid Background="#e20040" Grid.Row="1">
             <TextBlock Margin="0,7" Foreground="White" FontSize="30" TextAlignment="Center">Support us</TextBlock>
         </Grid>
 
         <ScrollViewer Background="#f0f0f0" Grid.Row="2">
             <StackPanel>
                 <StackPanel Margin="10,0,10,0">
-                    <TextBlock FontWeight="Bold" FontSize="25" Text="About this unofficial app" />
+                    <!--<TextBlock FontWeight="Bold" FontSize="25" Text="About this unofficial app" />
                     <TextBlock FontSize="15" TextWrapping="Wrap" Text="We, Jens and Dennis, two happy dudes, have created this application because there was no good alternative. In the nightly hours we go nuts during our Prog Party's. We love it and hope you do as well." />
 
                     <TextBlock Margin="0,10,0,0" FontWeight="Bold" FontSize="25" Text="More functionalities!" />
@@ -34,23 +34,23 @@
 
                     <TextBlock Margin="0,10,0,0" FontWeight="Bold" FontSize="25" Text="Help us" />
                     <TextBlock FontSize="15" TextWrapping="Wrap" Text="Add a review! With adding a good review, you help getting the app ranked higher." />
-                    <TextBlock FontSize="15" TextWrapping="Wrap" Text="You can also send an e-mail to us. For example to tell us that the design is so beautiful or maybe you are in love with us.... fine by us, please let us know." />
+                    <TextBlock FontSize="15" TextWrapping="Wrap" Text="You can also send an e-mail to us. For example to tell us that the design is so beautiful or maybe you are in love with us.... fine by us, please let us know." />-->
 
 
-                    <!--<TextBlock FontWeight="Bold" FontSize="25" Text="Over deze onofficiële app" />
+                    <TextBlock FontWeight="Bold" FontSize="25" Text="Over deze onofficiële app" />
                     <TextBlock FontSize="15" TextWrapping="Wrap" Text="Wij, Jens en Dennis, twee blije dudes, hebben deze applicatie gemaakt omdat er geen goed alternatief is. In de avonduren gaan we tijdens onze Prog Party's samen helemaal los, we hebben er lol in en hopen jullie ook." />
 
                     <TextBlock Margin="0,10,0,0" FontWeight="Bold" FontSize="25" Text="Meer functionaliteiten!" />
-                    <TextBlock FontSize="15" TextWrapping="Wrap" Text="Juist! Mocht je iets missen in de app of een top idee hebben wat toe zou kunnen voegen aan deze app. Neem dan contact met ons op via het formulier!" />
+                    <TextBlock FontSize="15" TextWrapping="Wrap" Text="Juist! Mocht je iets missen in de app of een top idee hebben wat toe zou kunnen voegen aan deze app. Neem dan contact met ons op via de e-mail!" />
 
                     <TextBlock Margin="0,10,0,0" FontWeight="Bold" FontSize="25" Text="Help mee" />
                     <TextBlock FontSize="15" TextWrapping="Wrap" Text="Geef een review! Hierdoor zal de app hoger in het app overzicht komen te staan. Zo zal men de app sneller kunnen vinden om vervolgende meer te kunnen Skoften!" />
-                    <TextBlock FontSize="15" TextWrapping="Wrap" Text="Ook kan je hieronder een e-mail sturen naar ons. Bijvoorbeeld om aan te geven dat het design zo mooi is. Misschien ben je verliefd op ons... prima, laat het ons weten." />-->
+                    <TextBlock FontSize="15" TextWrapping="Wrap" Text="Ook kan je hieronder een e-mail sturen naar ons. Bijvoorbeeld om aan te geven dat het design zo mooi is. Misschien ben je verliefd op ons... prima, laat het ons weten." />
                 </StackPanel>
                 <Border Margin="10" BorderBrush="Black" >
                     <Button Height="80" HorizontalAlignment="Stretch"  x:Name="ButtonReview" Click="ButtonReview_Click" Background="White" Foreground="Black" BorderBrush="Black">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="Assets/icons/review.png" Height="20"/>
+                            <Image Source="/Core/Assets/icons/review.png" Height="20"/>
                             <TextBlock Text="Place review" Margin="10,0,0,0" />
                             <!--<TextBlock Text="Plaats review" Margin="10,0,0,0" />-->
                         </StackPanel>
@@ -65,7 +65,7 @@
                         </Border>
                     </HyperlinkButton>
                 </StackPanel>
-                <Image Name="FooterImage" Loaded="FotoJensDennis_Loaded" />
+                <Image Name="FooterImage" Loaded="FotoJensDennis_Loaded" Source="/Core/Assets/foto_jens_dennis.png" />
             </StackPanel>
         </ScrollViewer>
     </Grid>

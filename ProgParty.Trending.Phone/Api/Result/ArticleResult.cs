@@ -10,6 +10,7 @@ namespace ProgParty.Trending.Api.Result
         public string Title { get; internal set; }
         public string Content { get; internal set; }
         public string ViewsCount { get; internal set; }
-        public string AuthorTime { get; internal set; }
+        public string Author { get; internal set; }
+        public string PostedOn { get; internal set; }
     }
 }

@@ -79,6 +79,15 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Api\Execute\ArticleExecute.cs" />
+    <Compile Include="Api\Execute\OverviewExecute.cs" />
+    <Compile Include="Api\Extension\StringExtension.cs" />
+    <Compile Include="Api\Parameter\ArticleParameter.cs" />
+    <Compile Include="Api\Parameter\OverviewParameter.cs" />
+    <Compile Include="Api\Result\ArticleResult.cs" />
+    <Compile Include="Api\Result\OverviewResult.cs" />
+    <Compile Include="Api\Scrape\ArticleScrape.cs" />
+    <Compile Include="Api\Scrape\OverviewScrape.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -93,6 +102,8 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Searcher.cs" />
+    <Compile Include="TrendingDataContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -158,7 +169,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="ProgParty.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ProgParty.Core.1.0.0-CI00040\lib\wpa81\ProgParty.Core.dll</HintPath>
+      <HintPath>..\packages\ProgParty.Core.1.0.0-CI00043\lib\wpa81\ProgParty.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -166,10 +177,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ProgParty.Trending.Api\ProgParty.Trending.Api.csproj">
-      <Project>{ffed3e3c-6317-4694-8c4c-5c0959fe7210}</Project>
-      <Name>ProgParty.Trending.Api</Name>
-    </ProjectReference>
+    <SDKReference Include="Microsoft.Advertising.Mobile.Display, Version=8.1">
+      <Name>Microsoft Advertising SDK for Windows Phone 8.1 %28XAML%29</Name>
+    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
