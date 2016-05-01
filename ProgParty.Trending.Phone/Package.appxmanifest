@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="2ea0b5dd-0cf2-4b19-86df-18095324b3df" Publisher="CN=Jens" Version="1.0.0.0" />
-  <mp:PhoneIdentity PhoneProductId="2ea0b5dd-0cf2-4b19-86df-18095324b3df" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="36742ProgParty.Trending.nl" Publisher="CN=285D7FE7-AC12-4DC2-8B8B-564986501DC7" Version="1.1.0.0" />
+  <mp:PhoneIdentity PhoneProductId="6e882df4-5525-42b1-a4cf-83e5f9c00bf6" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>ProgParty.Trending.Phone</DisplayName>
+    <DisplayName>Trending.nl</DisplayName>
     <PublisherDisplayName>Prog Party</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -16,10 +16,13 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="ProgParty.Trending.App">
-      <m3:VisualElements DisplayName="ProgParty.Trending" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="ProgParty.Trending" ForegroundText="light" BackgroundColor="transparent" ToastCapable="true">
+      <m3:VisualElements DisplayName="Trending" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="ProgParty.Trending" ForegroundText="light" BackgroundColor="transparent" ToastCapable="true">
         <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png">
         </m3:DefaultTile>
         <m3:SplashScreen Image="Assets\SplashScreen.png" />
+        <m3:InitialRotationPreference>
+          <m3:Rotation Preference="portrait" />
+        </m3:InitialRotationPreference>
       </m3:VisualElements>
     </Application>
   </Applications>
